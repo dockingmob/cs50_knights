@@ -42,6 +42,12 @@ knowledge2 = And(
     Or(And(AKnight, Not(AKnave)), And(Not(AKnight),AKnave)),
     #Either B is a knight or knave and not both
     Or(And(BKnave, Not(BKnight)), And(Not(BKnave),BKnight)),
+    # A saya "We are the same kind"
+    Biconditional(AKnight, Or(And(AKnight, BKnight), And(AKnave, BKnave))),
+    Biconditional(AKnave, Not(Or(And(AKnight, BKnight), And(AKnave, BKnave)))),
+    # B says "We are of different kinds"
+    Biconditional(BKnight, Not(Or(And(AKnight, BKnight), And(AKnave, BKnave)))),
+    Biconditional(BKnave, Or(And(AKnight, BKnight), And(AKnave, BKnave)))
 
 )
 
@@ -55,6 +61,7 @@ knowledge3 = And(
     Or(And(AKnight, Not(AKnave)), And(Not(AKnight),AKnave)),
     #Either B is a knight or knave and not both
     Or(And(BKnave, Not(BKnight)), And(Not(BKnave),BKnight)),
+
 
 )
 
