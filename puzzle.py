@@ -61,7 +61,17 @@ knowledge3 = And(
     Or(And(AKnight, Not(AKnave)), And(Not(AKnight),AKnave)),
     #Either B is a knight or knave and not both
     Or(And(BKnave, Not(BKnight)), And(Not(BKnave),BKnight)),
-
+    #Either C is a knight or knave and not both
+    Or(And(CKnave, Not(CKnight)), And(Not(CKnave),CKnight)),
+    # A says either "I am a knight." or "I am a knave.",
+    Biconditional(AKnight, Or(And(AKnight, Not(AKnave)), And(Not(AKnight),AKnave))),
+    Biconditional(AKnave, Not(Or(And(AKnight, Not(AKnave)), And(Not(AKnight),AKnave)))),
+    # B says "A said 'I am a knave"
+    Biconditional(BKnight, AKnave),
+    Biconditional(BKnave, Not(AKnave)),
+    # C says "A is a knight."
+    Biconditional(CKnight, AKnight),
+    Biconditional(CKnave, Not(AKnight))
 
 )
 
